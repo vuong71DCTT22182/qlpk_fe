@@ -1,0 +1,137 @@
+.nav {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  overflow-y: hidden;
+}
+
+.anav-header {
+  width: 250px;
+  height: 100px;
+}
+
+.aheader-left img {
+  width: 100%;
+}
+
+.admin-info {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.admin-info img {
+  height: 150px;
+  width: 150px;
+  /* padding:  10px 10px 10px 0; */
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-left: 30px;
+}
+
+.adminname {
+  display: flex;
+  color: white;
+  width: 100%;
+  align-items: center;
+  padding: 10px 45px;
+  /* background-color: white; */
+  position: relative;
+}
+
+.adminname:hover {
+  cursor: pointer;
+  color: blue;
+  /* background-color: white; */
+}
+
+.adminname:hover .under-admin-info {
+  display: block;
+}
+
+.under-admin-info {
+  position: absolute;
+  background-color: #fff;
+  top: 0;
+  margin: 35px 0;
+  display: none;
+}
+
+.anav-list{
+  height: 100vh;
+  width: 250px;
+  padding-top: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
+  box-sizing: border-box;
+  border-right: 1px solid #bbb;
+}
+.anav-item{
+  display: flex;
+  align-items: center;
+  height: 38px;
+  border-radius: 4px;
+  cursor: pointer;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.anav-item + .anav-item {
+  margin-top: 4px;
+}
+.anav-item:hover {
+  background-color: #2c8f70e6; /* Màu xanh lá cây */
+}
+
+.anav__texts:hover {
+  color: white;
+}
+.anav-item i {
+  color: white;
+}
+.anav-submenu {
+  background-color: #dfdede;
+  width: 100%;
+  top: 36px;
+  left: 0;
+  border-radius: 4px;
+}
+.anav-item-submenu {
+  display: flex;
+  align-items: center;
+  height: 38px;
+  border-radius: 4px;
+  cursor: pointer;
+  justify-content: space-between;
+  padding: 0 20px;
+  padding-left: 30px;
+}
+.anav-menu:hover .anav-submenu {
+  display: block;
+}
+.item-active {
+  background-color: #2c8f70;
+}
+
+.anav-item-submenu:hover {
+  background-color: #2c8f70e6;
+  color: white;
+}
+.fa-solid {
+  cursor: pointer;
+  color: black;
+  margin-left: 5px;
+}
+
+.fa-plus:before {
+  content: "\f067"; /* Unicode icon for plus */
+}
+
+.fa-minus:before {
+  content: "\f068"; /* Unicode icon for minus */
+}
+
+.anav__text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,154 @@
+.ms-grid-viewer {
+  border: 1px solid #bbb;
+  min-height: calc(100vh - 170px);
+  background-color: white;
+  border-radius: 6px;
+  position: relative;
+  margin-right: 10px;
+}
+
+.table-wrapper {
+  overflow-y: auto;
+}
+
+.full-width-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  background-color: #2c8f70;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  color: white;
+}
+
+.table-tbody {
+  display: block;
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+}
+.serial {
+  width: 40px;
+  padding-left: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #aaa;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 2px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
+.table-row {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-bottom: 1px solid #bbb;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  position: relative;
+}
+
+.table-row:hover {
+  background-color: #c4ffe1; /* Màu nền xanh nhạt khi hover */
+}
+.trClick {
+  background-color: #e3fff1; /* Màu nền xanh nhạt khi hover */
+}
+
+.tr-item {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.th-item {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.paging__left {
+  padding-left: 8px;
+}
+.tr-action {
+  width: 44px;
+  border-radius: 50%;
+  visibility: hidden;
+  cursor: pointer;
+  position: absolute;
+  color: #107c31;
+  top: 2px;
+  right: 10px;
+  border: 1px solid #bbb;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #bbb;
+}
+
+.table-row:hover .tr-action {
+  visibility: visible;
+  background-color: #ffffff; /* Màu nền của các nút thao tác khi hover */
+  color: rgb(0, 0, 0); /* Màu chữ của các nút thao tác khi hover */
+}
+
+.table__paging {
+  height: 48px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  z-index: 50;
+  border: none;
+  width: 100%;
+  border-top: 1px solid #bbb;
+}
+
+.paging__right {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.m-pagding-right-left {
+  margin-right: 8px;
+}
+.page-number-select {
+  color: red;
+}
+.m-page-number {
+  padding: 0 2px;
+  margin: 0 3px;
+}
+.m-page-number:hover {
+  cursor: pointer;
+}
+.text-next-pre {
+  margin-left: 5px;
+  cursor: pointer;
+}
+.none-data {
+  width: 100%;
+  height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,71 @@
+.admin-content {
+  /* padding: 20px 12px; */
+  height: calc(100vh - 40px);
+}
+
+.header {
+  background: #2c8f70;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  align-items: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.header:hover {
+  cursor: pointer;
+}
+.header1 {
+  display: flex;
+  justify-content: flex-end; /* Căn phải */
+  align-items: center;
+}
+.logout {
+  position: absolute;
+  top: 50px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  width: 200px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 10px;
+  background: #2c8f70;
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.25);
+}
+.logout:hover {
+  background: #2c8f70e6;
+  color: rgb(0, 0, 0);
+}
+
+.header-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+.line {
+  border-top: 1px solid #bbb;
+  margin-bottom: 10px;
+}
+
+.title {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  font-weight: 800;
+}
+
+.under-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.grid-viewer {
+  padding-left: 20px;
+}
