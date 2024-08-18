@@ -12,9 +12,10 @@ const enumResouce = {
   statusExamSchedule: {
     Add: 0,
     WaitingExamination: 1, //Chờ tới khám
-    Examined: 2, //Đã khám
-    Overdue: 3, //Quá hạn
-    Canceled: 4, //Đã hủy
+    Processing: 2, //Đang khám
+    Examined: 3, //Đã khám
+    Overdue: 4, //Quá hạn
+    Canceled: 5, //Đã hủy
   },
   /**
    * Loại form

@@ -82,7 +82,7 @@ export default {
         currentPage: 1,
         pageSize: 20,
         textSearch: "",
-        status: 1,
+        receiptPatient: 1,
       },
       showPopup: false,
       titleDetail: "Chi tiết lịch hẹn khám",
@@ -117,48 +117,80 @@ export default {
      * Lưu fỏrm
      * @param {*} isNew
      */
-    async save() {
-      const me = this;
-      let param = {
-        examSchedule: {
-          examScheduleID: 0,
-          dateScheduled: this.$convertToLocalTime(me.currentItem.dateScheduled),
-          patientID: me.currentItem.patientID,
-          doctorID: me.currentItem.doctorID,
-          status: 1,
-          examContent: me.currentItem.examContent,
-        },
-        examResult: {
-          examResultID: 0,
-          examResultNumber: "",
-          patientID: me.currentItem.patientID,
-          doctorID: me.currentItem.doctorID,
-          examScheduleID: 0,
-          examDate: this.$convertToLocalTime(me.currentItem.dateScheduled),
-          feeExam: 0,
-          feeMedicine: 0,
-          feeTotal: 0,
-          diagnose: "",
-          handlingDirection: "",
-          examContent: me.currentItem.examContent,
-          status: 1
-        },
-      };
-
-      let res = await examScheduleApi.insertOrUpdateAsync(param);
-      if (me.isAdd) {
-        res
-          ? me.$toast.success("Thêm mới thành công")
-          : me.$toast.error("Thêm mới thất bại");
-      } else {
-        res
-          ? me.$toast.success("Sửa thành công")
-          : me.$toast.error("Sửa thất bại");
-      }
-      me.showPopup = false
-      await me.loadData();
+     async save(force = 0) {
+  const me = this;
+  let param = {
+    examSchedule: {
+      examScheduleID: 0,
+      dateScheduled: this.$convertToLocalTime(me.currentItem.dateScheduled),
+      patientID: me.currentItem.patientID,
+      doctorID: me.currentItem.doctorID,
+      status: 1,
+      examContent: me.currentItem.examContent,
     },
+    examResult: {
+      examResultID: 0,
+      examResultNumber: "",
+      patientID: me.currentItem.patientID,
+      doctorID: me.currentItem.doctorID,
+      examScheduleID: 0,
+      examDate: this.$convertToLocalTime(me.currentItem.dateScheduled),
+      feeExam: 0,
+      feeMedicine: 0,
+      feeTotal: 0,
+      diagnose: "",
+      handlingDirection: "",
+      examContent: me.currentItem.examContent,
+      status: 1
+    },
+    force: force
+  };
 
+  try {
+    let res = await examScheduleApi.insertOrUpdateAsync(param);
+
+
+    if (!res) {
+      me.$toast.error("Không nhận được phản hồi từ máy chủ.");
+      return;
+    }
+
+    if (me.isAdd) {
+      if (res.isOk || res === true) {
+        me.$toast.success("Thêm mới thành công");
+      } else {
+        if (force === 0) {
+          me.showConfirmationDialog(res.errorMessage || "Có lỗi xảy ra, bạn có muốn thử lại không?");
+        } else {
+          me.$toast.error(res.errorMessage || "Lỗi khi thêm mới với force.");
+        }
+      }
+    } else {
+      res.isOk || res === true
+        ? me.$toast.success("Sửa thành công")
+        : me.$toast.error(res.errorMessage || "Lỗi khi sửa.");
+    }
+  } catch (error) {
+    me.$toast.error("Có lỗi xảy ra khi gọi API: " + error.message);
+  }
+
+  me.showPopup = false;
+  await me.loadData();
+}
+,
+showConfirmationDialog(errorMessage) {
+    const me = this;
+    me.$confirm(errorMessage, 'Xác nhận', {
+      confirmButtonText: 'Xác nhận lưu',
+      cancelButtonText: 'Hủy',
+      type: 'warning',
+    }).then(() => {
+      // Gọi lại hàm save với force = 1
+      me.save(1);
+    }).catch(() => {
+      me.$toast.info("Hành động đã bị hủy.");
+    });
+  },
     /**
  * Đóng form
  */
@@ -185,6 +217,8 @@ export default {
             return "Chờ tới khám";
           case enumResouce.statusExamSchedule.Examined:
             return "Đã khám";
+          case enumResouce.statusExamSchedule.Processing:
+            return "Đang khám";
           case enumResouce.statusExamSchedule.Overdue:
             return "Quá hạn";
           case enumResouce.statusExamSchedule.Canceled:

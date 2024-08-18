@@ -224,6 +224,7 @@ export default {
     return {
       title: "Danh sách phiếu khám bệnh",
       columns: [
+        { name: "Số phiếu khám", field: "examResultNumber", width: "150px" }, // Cột Mã bệnh nhân, độ rộng 150px
         { name: "Họ và tên", field: "patientName", width: "200px" }, // Cột Họ và tên, độ rộng 200px
         { name: "Mã bệnh nhân", field: "patientNumber", width: "150px" }, // Cột Mã bệnh nhân, độ rộng 150px
         {
